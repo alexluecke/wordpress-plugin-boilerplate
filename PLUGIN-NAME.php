@@ -35,7 +35,7 @@ class PluginClassName {
 
 	private $_prefix = 'PLUGIN-NAME';
 	private $_title  = 'Plugin Options Title';
-	private $_name   = __CLASS__ . '_options';
+	private $_name   = 'PluginClassNameOptions';
 	private $_page   = __FILE__;
 
 	/*
