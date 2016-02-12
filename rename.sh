@@ -26,7 +26,8 @@ PLUG_FILES=$(find . -iname "$PLUG_DEFAULT_TEXT*")
 for FILE in $PLUG_FILES; do
 	NEW_FILE=$( echo "$FILE" | sed -e "s/$PLUG_DEFAULT_TEXT/$PLUG_NAME/g" )
 	echo "== Replacing text $PLUG_DEFAULT_CLASS with $PLUG_CLASS_NAME =="
-	echo "== Moving $FILE to $NEW_FILE ==\n"
+	echo "== Moving $FILE to $NEW_FILE =="
+	echo ""
 	sed -i "s/$PLUG_DEFAULT_CLASS/$PLUG_CLASS_NAME/g" $FILE
 	mv $FILE $NEW_FILE;
 done;
