@@ -33,9 +33,9 @@ class PluginClassName {
 
 	private static $_instance;
 
-	private $_prefix = 'plugin-prefix';
-	private $_name   = 'plugin_options';
+	private $_prefix = 'PLUGIN-NAME';
 	private $_title  = 'Plugin Options Title';
+	private $_name   = __CLASS__ . '_options';
 	private $_page   = __FILE__;
 
 	/*
