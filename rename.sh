@@ -37,3 +37,9 @@ for FILE in $PLUG_FILES; do
 	sed -i "s/$PLUG_DEFAULT_TEXT/$PLUG_NAME/g" $FILE
 	mv $FILE $NEW_FILE;
 done;
+
+echo "== Modifying file: uninstall.php =="
+echo -e "\tReplacing text $PLUG_DEFAULT_CLASS with $PLUG_CLASS_NAME"
+sed -i "s/$PLUG_DEFAULT_CLASS/$PLUG_CLASS_NAME/g" uninstall.php
+
+echo -e "\nDone."
