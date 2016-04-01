@@ -6,10 +6,10 @@ PLUG_NAME=""
 PLUG_CLASS_NAME=""
 
 function print_help {
-	echo -e "\nHelp:"
+	echo -e "Help:"
 	echo -e "\t-n | --name : This will be the name or prefix for plug-in file names."
 	echo -e "\t-c | --class : This will be the name of the PHP plug-in class."
-	echo -e "\n-u and -c are required."
+	echo -e "\n-u and -c are required.\n"
 }
 
 # Letters numbders and underscores only.
@@ -41,11 +41,8 @@ do
 	shift # past argument or value
 done
 
-echo $PLUG_NAME
-echo $PLUG_CLASS_NAME
-
 if [ -z "$PLUG_NAME" ] || [ -z "$PLUG_CLASS_NAME" ]; then
-	echo "Plug-in name or class name not provided."
+	echo -e "\nPlug-in name or class name not provided.\n"
 	print_help
 	exit
 fi
