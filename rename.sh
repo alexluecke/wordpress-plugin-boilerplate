@@ -2,11 +2,51 @@
 
 PLUG_DEFAULT_TEXT="PLUGIN-NAME"
 PLUG_DEFAULT_CLASS="PluginClassName"
-PLUG_NAME=$1
-PLUG_CLASS_NAME=$2
+PLUG_NAME=""
+PLUG_CLASS_NAME=""
+
+function print_help {
+	echo -e "\nHelp:"
+	echo -e "\t-n | --name : This will be the name or prefix for plug-in file names."
+	echo -e "\t-c | --class : This will be the name of the PHP plug-in class."
+	echo -e "\n-u and -c are required."
+}
+
+# Letters numbders and underscores only.
+function clean_input {
+	echo "$1" | sed -e "s/[^0-9A-Za-z_\-]//g"
+}
+
+while [[ $# > 1 ]]
+do
+	key="$1"
+	case $key in
+		-h|--help)
+			print_help
+			exit
+			;;
+		-n|--name)
+			PLUG_NAME=$( clean_input "$2" )
+			shift # past argument
+			;;
+		-c|--class)
+			PLUG_CLASS_NAME=$( clean_input "$2" )
+			shift # past argument
+			;;
+		*)
+			print_help
+			exit
+			;;
+	esac
+	shift # past argument or value
+done
+
+echo $PLUG_NAME
+echo $PLUG_CLASS_NAME
 
 if [ -z "$PLUG_NAME" ] || [ -z "$PLUG_CLASS_NAME" ]; then
-	echo "Expected ./rename {PLUGIN_NAME} {PLUG_CLASS_NAME}"
+	echo "Plug-in name or class name not provided."
+	print_help
 	exit
 fi
 
